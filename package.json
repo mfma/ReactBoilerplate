@@ -6,7 +6,8 @@
   "repository": "create a boilerplate",
   "license": "MIT",
   "dependencies": {
-    "mirrorx": "^0.2.5"
+    "mirrorx": "^0.2.5",
+    "jquery": "^3.2.1"
   },
   "devDependencies": {
     "react": "^15.6.1",
