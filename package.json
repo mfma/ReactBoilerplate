@@ -1,0 +1,17 @@
+{
+  "name": "ReactBoilerplate",
+  "version": "0.0.1",
+  "author": "mfma",
+  "description": "Test Mirror",
+  "repository": "create a boilerplate",
+  "license": "MIT",
+  "dependencies": {
+    "mirrorx": "^0.2.5"
+  },
+  "devDependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
