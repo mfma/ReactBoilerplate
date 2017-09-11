@@ -1,12 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-let HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-/**
- * 是否开发环境
- * @type {boolean}
- */
-const IS_DEV = process.env.NODE_ENV.trim() !== 'production';
 
 
 const SRC_PATH = path.resolve("src");
@@ -24,9 +19,7 @@ let config = {
 		app: [path.resolve(SRC_PATH,"index.js")]
 	},
 	output: {
-		path: DIST_PATH,
-		filename: IS_DEV ? 'js/[name].bundle.js' : 'js/test1.bundle.js',
-		chunkFilename: IS_DEV ? 'js/[name].chunk.js' : 'js/test2.chunk.js'
+		path: DIST_PATH
 	},
 	module: {
 		rules: [
@@ -41,7 +34,6 @@ let config = {
 						}
 					}
 				],
-				
 			},
 			{
 				test: /\.(png|jpg|gif|svg)$/,
@@ -86,6 +78,7 @@ let config = {
 		]
 	},
 	plugins: [
+		new CleanWebpackPlugin(['dist']),
 		new webpack.optimize.CommonsChunkPlugin({
 			names: ['lib', 'manifest']
 		}),
@@ -99,20 +92,6 @@ let config = {
 			},
 			output: {
 				comments: false
-			}
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'index.html',
-			template: path.resolve('index.html'),
-			chunks: ['app', 'lib'],
-			minify: IS_DEV ? false : {
-				collapseWhitespace: true,
-				collapseInlineTagWhitespace: true,
-				removeRedundantAttributes: true,
-				removeEmptyAttributes: true,
-				removeScriptTypeAttributes: true,
-				removeStyleLinkTypeAttributes: true,
-				removeComments: true
 			}
 		}),
 		function () {
