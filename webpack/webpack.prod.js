@@ -1,5 +1,5 @@
-let config = require('./webpack.config');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let config = require('./webpack.config');
 
 config.output.publicPath = "/";
 
@@ -13,6 +13,10 @@ config.module.rules.push({
 		new ExtractTextPlugin({
 			filename: 'style.css',
 			allChunks: true,
-		}),
+		})
 	]
 });
+
+console.log(JSON.stringify(config));
+
+module.exports=config;

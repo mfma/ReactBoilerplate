@@ -9,37 +9,39 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 const IS_DEV = process.env.NODE_ENV.trim() !== 'production';
 
 
+const SRC_PATH = path.resolve("src");
+const DIST_PATH = path.resolve("dist");
+const PUBLIC_PATH = path.resolve('public');
+const CONFIG_PATH = path.resolve('config');
+const TEST_PATH = path.resolve('test');
+
 /**
  * 配置参数
  */
 let config = {
-	context: path.resolve(__dirname, "src"),
+	context: SRC_PATH,
 	entry: {
-		app: path.resolve(__dirname, "/src/index.js")
+		app: [path.resolve(SRC_PATH,"index.js")]
 	},
 	output: {
-		path: path.resolve(__dirname, "dist"),
-		filename: IS_DEV ? 'js/[name].bundle.js' : 'js/[name].[chunkhash].bundle.js',
-		chunkFilename: IS_DEV ? 'js/[name].chunk.js' : 'js/[name].[chunkhash].chunk.js'
+		path: DIST_PATH,
+		filename: IS_DEV ? 'js/[name].bundle.js' : 'js/test1.bundle.js',
+		chunkFilename: IS_DEV ? 'js/[name].chunk.js' : 'js/test2.chunk.js'
 	},
 	module: {
 		rules: [
 			{
 				test: /\.js?$/,
-				include: [
-					path.resolve(__dirname, 'src')
-				],
-				exclude: [
-					"node_modules"
-				],
+				exclude: /node_modules/,
 				use: [
 					{
-						loader: 'babel-loader'
+						loader: 'babel-loader',
+						options: {
+							presets: ["es2015"]
+						}
 					}
 				],
-				options: {
-					presets: ["es2015"]
-				}
+				
 			},
 			{
 				test: /\.(png|jpg|gif|svg)$/,
@@ -68,18 +70,18 @@ let config = {
 	},
 	resolve: {
 		alias: {
-			actions: path.resolve(__dirname, 'src/actions'),
-			app: path.resolve(__dirname, 'src/app'),
-			config: path.resolve(__dirname, 'config'),
-			reducers: path.resolve(__dirname, 'src/reducers'),
-			utils: path.resolve(__dirname, 'src/utils'),
-			images: path.resolve(__dirname, 'public/images'),
-			scripts: path.resolve(__dirname, 'public/javascripts'),
-			styles: path.resolve(__dirname, 'public/stylesheets'),
-			test: path.resolve(__dirname, 'test')
+			actions: path.resolve(SRC_PATH, 'actions'),
+			app: path.resolve(SRC_PATH, 'app'),
+			config: CONFIG_PATH,
+			reducers: path.resolve(SRC_PATH, 'reducers'),
+			utils: path.resolve(SRC_PATH, 'utils'),
+			images: path.resolve(PUBLIC_PATH, 'images'),
+			scripts: path.resolve(PUBLIC_PATH, 'javascripts'),
+			styles: path.resolve(PUBLIC_PATH, 'stylesheets'),
+			test: TEST_PATH
 		},
 		modules: [
-			path.resolve(__dirname, "src"),
+			SRC_PATH,
 			"node_modules"
 		]
 	},
@@ -99,10 +101,9 @@ let config = {
 				comments: false
 			}
 		}),
-		new webpack.optimize.DedupePlugin(),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-			template: 'index.html',
+			template: path.resolve('index.html'),
 			chunks: ['app', 'lib'],
 			minify: IS_DEV ? false : {
 				collapseWhitespace: true,

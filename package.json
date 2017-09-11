@@ -11,8 +11,8 @@
     "boilerplate"
   ],
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack/webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "start": "cross-env NODE_ENV=development node webpack/webpack.dev.js --hot",
+    "build": "cross-env NODE_ENV=production  webpack --config webpack/webpack.prod.js"
   },
   "license": "MIT",
   "babel": {
