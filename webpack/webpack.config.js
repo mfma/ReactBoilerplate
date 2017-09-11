@@ -1,12 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+
 /**
  * 是否开发环境
  * @type {boolean}
  */
 const IS_DEV = process.env.NODE_ENV.trim() !== 'production';
-
 
 
 /**
@@ -78,14 +78,14 @@ let config = {
 			styles: path.resolve(__dirname, 'public/stylesheets'),
 			test: path.resolve(__dirname, 'test')
 		},
-		modules:[
-			path.resolve(__dirname,"src"),
+		modules: [
+			path.resolve(__dirname, "src"),
 			"node_modules"
 		]
 	},
-	plugins:[
+	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
-			names:['lib','manifest']
+			names: ['lib', 'manifest']
 		}),
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
@@ -99,7 +99,41 @@ let config = {
 				comments: false
 			}
 		}),
-		new webpack.optimize.DedupePlugin()
+		new webpack.optimize.DedupePlugin(),
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: 'index.html',
+			chunks: ['app', 'lib'],
+			minify: IS_DEV ? false : {
+				collapseWhitespace: true,
+				collapseInlineTagWhitespace: true,
+				removeRedundantAttributes: true,
+				removeEmptyAttributes: true,
+				removeScriptTypeAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				removeComments: true
+			}
+		}),
+		function () {
+			this.plugin('compilation', function (compilation) {
+				compilation.plugin('html-webpack-plugin-after-emit', function (file, callback) {
+					let manifest = '';
+					Object.keys(compilation.assets).forEach(function (filename) {
+						if (/\/?manifest.[^\/]*js$/.test(filename)) {
+							manifest = '<script>' + compilation.assets[filename].source() + '</script>';
+						}
+					});
+					if (manifest) {
+						let htmlSource = file.html.source();
+						htmlSource = htmlSource.replace(/(<\/head>)/, manifest + '$1');
+						file.html.source = function () {
+							return htmlSource;
+						};
+					}
+					callback(null, file);
+				});
+			});
+		}
 	]
 };
 

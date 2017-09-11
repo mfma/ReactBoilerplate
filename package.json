@@ -10,6 +10,10 @@
     "webpack",
     "boilerplate"
   ],
+  "scripts": {
+    "start": "webpack-dev-server --open --config webpack/webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
   "license": "MIT",
   "babel": {
     "plugins": [
@@ -24,7 +28,7 @@
   },
   "dependencies": {
     "jquery": "^3.2.1",
-    "mirrorx": "^0.2.5"
+    "mirrorx": "^0.2.6"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.3",
@@ -36,6 +40,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.7",
+    "cross-env": "^5.0.5",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
