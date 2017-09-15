@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 let WebDevServer = require('webpack-dev-server');
 let config = require('./webpack.config');
 
-const port = 8080;
+const port = 3000;
 const host = 'localhost';
 const publicPath = 'http://' + host + ':' + port + '/';
 
@@ -14,7 +14,7 @@ const publicPath = 'http://' + host + ':' + port + '/';
 config.entry.app.unshift('webpack-dev-server/client?' + publicPath);
 config.entry.app.unshift('webpack/hot/only-dev-server');
 config.output = merge(config.output, {
-	publicPath:publicPath,
+	publicPath: publicPath,
 	filename: 'js/[name].bundle.js',
 	chunkFilename: 'js/[name].chunk.js'
 });
@@ -27,9 +27,7 @@ config.module.rules.push({
 		},
 		{
 			loader: 'css-loader',
-			options: {
-				importLoaders: 1
-			}
+			options: {importLoaders: 1,minimize:true}
 		},
 		{
 			loader: 'postcss-loader'
@@ -53,6 +51,7 @@ new WebDevServer(webpack(config), {
 	compress: true,
 	inline: true,
 	open: true,
+	lazy:false,
 	stats: {
 		chunk: false,
 		children: false,

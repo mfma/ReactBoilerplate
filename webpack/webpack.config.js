@@ -1,7 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 
 
 const SRC_PATH = path.resolve("src");
@@ -9,6 +7,7 @@ const DIST_PATH = path.resolve("dist");
 const PUBLIC_PATH = path.resolve('public');
 const CONFIG_PATH = path.resolve('config');
 const TEST_PATH = path.resolve('test');
+const NODE_MODULES = path.resolve('node_modules');
 
 /**
  * 配置参数
@@ -16,7 +15,10 @@ const TEST_PATH = path.resolve('test');
 let config = {
 	context: SRC_PATH,
 	entry: {
-		app: [path.resolve(SRC_PATH,"index.js")]
+		app: [path.resolve(SRC_PATH, "App.js")],
+		lib: [
+			'react', 'react-dom', 'react-router', 'react-router-dom', 'react-router-redux', 'redux', 'react-redux', 'jquery', 'lodash'
+		]
 	},
 	output: {
 		path: DIST_PATH
@@ -25,12 +27,30 @@ let config = {
 		rules: [
 			{
 				test: /\.js?$/,
-				exclude: /node_modules/,
+				exclude: function (path) {
+					// 路径中含有 node_modules 的就不去解析。
+					return !!path.match(/node_modules/);
+				},
+				include: [
+					SRC_PATH
+				],
 				use: [
 					{
-						loader: 'babel-loader',
+						loader: 'babel-loader?cacheDirectory',
 						options: {
-							presets: ["es2015"]
+							presets: ["es2015", "stage-2", "react"],
+							"plugins": [
+								["import",
+									{
+										"libraryName": "antd",
+										"style": 'css'
+									},
+									{
+										"libraryName": "antd-mobile",
+										"style": 'css'
+									}
+								]
+							]
 						}
 					}
 				],
@@ -62,37 +82,26 @@ let config = {
 	},
 	resolve: {
 		alias: {
-			actions: path.resolve(SRC_PATH, 'actions'),
-			app: path.resolve(SRC_PATH, 'app'),
-			config: CONFIG_PATH,
-			reducers: path.resolve(SRC_PATH, 'reducers'),
-			utils: path.resolve(SRC_PATH, 'utils'),
-			images: path.resolve(PUBLIC_PATH, 'images'),
-			scripts: path.resolve(PUBLIC_PATH, 'javascripts'),
-			styles: path.resolve(PUBLIC_PATH, 'stylesheets'),
-			test: TEST_PATH
+			"react": path.resolve(NODE_MODULES, 'react'),
+			"react-dom": path.resolve(NODE_MODULES, 'react-dom'),
+			"mirrorx": path.resolve(NODE_MODULES, 'mirrorx'),
+			"app": path.resolve(SRC_PATH, 'app/'),
+			"config": CONFIG_PATH,
+			"utils": path.resolve(SRC_PATH, 'utils/'),
+			"test": TEST_PATH
 		},
 		modules: [
 			SRC_PATH,
-			"node_modules"
-		]
+			NODE_MODULES
+		],
+		extensions: [' ', '.js', '.jsx', '.es6', 'css', 'png', 'svg', 'jpg', 'jpeg']
 	},
 	plugins: [
-		new CleanWebpackPlugin(['dist']),
 		new webpack.optimize.CommonsChunkPlugin({
-			names: ['lib', 'manifest']
+			names: ['lib', 'manifest'],
 		}),
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
-		}),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false,
-				drop_console: false
-			},
-			output: {
-				comments: false
-			}
 		}),
 		function () {
 			this.plugin('compilation', function (compilation) {
