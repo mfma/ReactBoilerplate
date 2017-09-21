@@ -1,0 +1,354 @@
+{
+  "projectId": "eb148fba-1be8-4134-8a86-e346a93f2cc4",
+  "projectName": "编辑器开发勿用",
+  "projectType": "cso",
+  "description": "编辑器开发勿用",
+  "ownerId": "c72ab20f-fd9a-4902-843a-92f823db6966",
+  "editorUrl": "/cHJvamVjdElkPWViMTQ4ZmJhLTFiZTgtNDEzNC04YTg2LWUzNDZhOTNmMmNjNCN1c2VySWQ9YzcyYWIyMGYtZmQ5YS00OTAyLTg0M2EtOTJmODIzZGI2OTY2I3R5cGU9Y3Nv@MSbuilder",
+  "deleted": 0,
+  "createdAt": 1500370368000,
+  "updatedAt": 1500430158000,
+  "packages": [],
+  "iconUrl": null,
+  "pages": [{
+    "id": "j5d8ek5z",
+    "pageIndex": 0,
+    "opacity": 1,
+    "height": 603,
+    "backgroundColor": [255, 255, 255, 0],
+    "name": "Page",
+    "children": {
+      "j5d995vk": {
+        "id": "j5d995vk",
+        "moduleType": "Picker",
+        "name": "Picker",
+        "style": {
+          "display": "block",
+          "left": 95,
+          "top": 143,
+          "zIndex": 2,
+          "selectedItem": "value2"
+        },
+        "content": [{
+          "text": "text1",
+          "value": "value1"
+        }, {
+          "text": "text2",
+          "value": "value2"
+        }, {
+          "text": "text3",
+          "value": "value3"
+        }]
+      },
+      "j5da1aa8": {
+        "id": "j5da1aa8",
+        "moduleType": "Switch",
+        "name": "Switch",
+        "style": {
+          "backgroundImage": "",
+          "borderStyle": "none",
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "borderColor": [255, 255, 255, 1],
+          "onColor": [0, 0, 0, 1],
+          "offColor": [0, 0, 0, 1],
+          "degree": 0,
+          "display": "flex",
+          "fontSize": 14,
+          "fontWeight": "normal",
+          "labelOn": "ON",
+          "labelOff": "OFF",
+          "height": 27,
+          "left": 148,
+          "opacity": 1,
+          "top": 21,
+          "width": 56,
+          "zIndex": 2,
+          "onBackgroundColor": [33, 33, 33, 0.5],
+          "offBackgroundColor": [97, 97, 97, 0.9],
+          "checked": false
+        }
+      },
+      "j5dalufh": {
+        "id": "j5dalufh",
+        "moduleType": "Text",
+        "name": "Text",
+        "style": {
+          "alignItems": "flex-start",
+          "backgroundColor": [255, 255, 255, 0],
+          "backgroundImage": "",
+          "backgroundRepeat": "no-repeat",
+          "backgroundSize": "100% 100%",
+          "borderObj": {
+            "none": {
+              "borderColor": [255, 255, 255, 0],
+              "borderStyle": "none",
+              "borderWidth": "0"
+            }
+          },
+          "borColor": [255, 255, 255, 0],
+          "borderType": "none",
+          "borderRadius": 0,
+          "color": [0, 0, 0, 1],
+          "degree": 0,
+          "display": "flex",
+          "fontSize": 14,
+          "fontWeight": "normal",
+          "height": 35,
+          "justifyContent": "flex-start",
+          "left": 47,
+          "letterSpacing": 0,
+          "lineHeight": 1,
+          "opacity": 1,
+          "textValue": "Text",
+          "textAlign": "left",
+          "top": 50,
+          "width": 46,
+          "wordWrap": "break-word",
+          "wordBreak": "break-all",
+          "zIndex": 1,
+          "isEllipsis": false
+        }
+      },
+      "j5daw0h1": {
+        "id": "j5daw0h1",
+        "moduleType": "View",
+        "name": "View",
+        "style": {
+          "backgroundColor": [255, 255, 255, 0],
+          "backgroundImage": "",
+          "borderStyle": "none",
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "borderColor": [255, 255, 255, 1],
+          "degree": 0,
+          "display": "flex",
+          "height": 100,
+          "left": 109,
+          "opacity": 1,
+          "top": 262,
+          "width": 100,
+          "zIndex": 1
+        },
+        "children": []
+      }
+    }
+  }],
+  "apis": {
+    "5": {
+      "apiId": 5,
+      "apiName": "南方航空航班信息查询",
+      "apiDescription": "通过提供航班号查询航班信息",
+      "apiVersion": "1.0",
+      "url": "http://10.9.100.253:8280/jiaotong/nf/hb/1.0",
+      "iconPath": "http://10.9.100.252/group1/M00/00/06/rBAFy1keoW-AL5q5AAAr6azuHXo236.png",
+      "requestType": "get",
+      "params": {
+        "0": {
+          "name": "航班号",
+          "value": "name",
+          "required": true
+        }
+      },
+      "return": {
+        "0": {
+          "name": "航班号",
+          "value": "航班号",
+          "preKey": "南方航空公司航班计划"
+        },
+        "1": {
+          "name": "起飞机场",
+          "value": "起飞机场",
+          "preKey": "南方航空公司航班计划"
+        },
+        "2": {
+          "name": "到达机场",
+          "value": "到达机场",
+          "preKey": "南方航空公司航班计划"
+        },
+        "3": {
+          "name": "起飞时间",
+          "value": "起飞时间",
+          "preKey": "南方航空公司航班计划"
+        },
+        "4": {
+          "name": "到达时间",
+          "value": "到达时间",
+          "preKey": "南方航空公司航班计划"
+        },
+        "5": {
+          "name": "机型",
+          "value": "model",
+          "preKey": "南方航空公司航班计划"
+        },
+        "6": {
+          "name": "班期",
+          "value": "班期",
+          "preKey": "南方航空公司航班计划"
+        },
+        "7": {
+          "name": "有效起始日期",
+          "value": "有效起始日期",
+          "preKey": "南方航空公司航班计划"
+        },
+        "8": {
+          "name": "有效截至日期",
+          "value": "有效截至日期",
+          "preKey": "南方航空公司航班计划"
+        }
+      }
+    },
+    "14": {
+      "apiId": 14,
+      "apiName": "无锡-热点新闻统计",
+      "apiDescription": "获取热点新闻的来源，路径",
+      "apiVersion": "1.0",
+      "url": "http://10.9.100.253:8280/iss/ranking/news/1.0",
+      "iconPath": "http://10.9.100.252/group1/M00/00/06/rBAFy1kiWtyAYtMHAAAcdxZpdys423.png",
+      "requestType": "get",
+      "return": {
+        "0": {
+          "name": "标签",
+          "value": "标签",
+          "preKey": "热点新闻"
+        },
+        "1": {
+          "name": "海新闻标题 ",
+          "value": "新闻标题",
+          "preKey": "热点新闻"
+        },
+        "2": {
+          "name": "来源",
+          "value": "来源",
+          "preKey": "热点新闻"
+        },
+        "3": {
+          "name": "连接地址",
+          "value": "连接地址",
+          "preKey": "热点新闻"
+        }
+      }
+    },
+    "20": {
+      "apiId": 20,
+      "apiName": "二维码生成器",
+      "apiDescription": "通过提供的文字或者URL生成相应的二维码",
+      "apiVersion": "1.0",
+      "url": "http://10.9.100.253:8280/common/code/1.0",
+      "iconPath": "http://10.9.100.252/group1/M00/00/06/rBAFy1kiZCSAfslRAAAlrKLUiQU943.png",
+      "requestType": "get",
+      "params": {
+        "0": {
+          "name": "文字或者URL",
+          "value": "text",
+          "required": true
+        }
+      },
+      "return": {
+        "0": {
+          "name": "二维码图片地址",
+          "value": "URL"
+        }
+      }
+    },
+    "22": {
+      "apiId": 22,
+      "apiName": "无锡-景区",
+      "apiDescription": "无锡市旅游景区信息查询API",
+      "apiVersion": "1.0",
+      "url": "http://10.9.100.253:8280/city/wuxi/jingqu/1.0",
+      "iconPath": "http://10.9.100.252/group1/M00/00/06/rBAFy1kiZN2ADF08AAAtz7LYpjU680.png",
+      "requestType": "get",
+      "return": {
+        "0": {
+          "name": "景区名称",
+          "value": "景区名称",
+          "preKey": "景区"
+        },
+        "1": {
+          "name": "等级",
+          "value": "等级",
+          "preKey": "景区"
+        },
+        "2": {
+          "name": "地址",
+          "value": "地址",
+          "preKey": "景区"
+        },
+        "3": {
+          "name": "电话",
+          "value": "电话",
+          "preKey": "景区"
+        }
+      }
+    },
+    "23": {
+      "apiId": 23,
+      "apiName": "无锡-旅行社",
+      "apiDescription": "无锡市旅行社信息查询API",
+      "apiVersion": "1.0",
+      "url": "http://10.9.100.253:8280/city/wuxi/lvxingshe/1.0",
+      "iconPath": "http://10.9.100.252/group1/M00/00/06/rBAFy1kiZSSALiHPAAAsQhug8Ys546.png",
+      "requestType": "get",
+      "return": {
+        "0": {
+          "name": "旅行社名称",
+          "value": "旅行社名称",
+          "preKey": "旅行社"
+        },
+        "1": {
+          "name": "地址",
+          "value": "地址",
+          "preKey": "旅行社"
+        },
+        "2": {
+          "name": "传真",
+          "value": "传真",
+          "preKey": "旅行社"
+        }
+      }
+    },
+    "24": {
+      "apiId": 24,
+      "apiName": "北京-租车查询",
+      "apiDescription": "北京汽车租赁企业查询",
+      "apiVersion": "1.0",
+      "url": "http://10.9.100.253:8280/city/beijing/zuche/1.0",
+      "iconPath": "http://10.9.100.252/group1/M00/00/06/rBAFy1kiZXeAPHJdAAAhOi2CRGA531.png",
+      "requestType": "get",
+      "return": {
+        "0": {
+          "name": "企业名称",
+          "value": "企业名称",
+          "preKey": "汽车租赁企业信息"
+        },
+        "1": {
+          "name": "门店名称",
+          "value": "门店名称",
+          "preKey": "汽车租赁企业信息"
+        },
+        "2": {
+          "name": "单位地址",
+          "value": "单位地址",
+          "preKey": "汽车租赁企业信息"
+        },
+        "3": {
+          "name": "租赁电话",
+          "value": "租赁电话",
+          "preKey": "汽车租赁企业信息"
+        },
+        "4": {
+          "name": "救援电话",
+          "value": "救援电话",
+          "preKey": "汽车租赁企业信息"
+        },
+        "5": {
+          "name": "所属区县",
+          "value": "所属区县",
+          "preKey": "汽车租赁企业信息"
+        }
+      }
+    }
+  },
+  "version": "V2.0"
+}

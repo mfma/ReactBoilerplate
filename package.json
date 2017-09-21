@@ -2,17 +2,83 @@
   "name": "ReactBoilerplate",
   "version": "0.0.1",
   "author": "mfma",
-  "description": "Test Mirror",
-  "repository": "create a boilerplate",
+  "description": "create a react boilerplate",
+  "keywords": [
+    "react",
+    "redux",
+    "react-router",
+    "webpack",
+    "boilerplate"
+  ],
+  "scripts": {
+    "start": "node webpack/webpack.dev.js --hot",
+    "build": "webpack --config webpack/webpack.prod.js"
+  },
   "license": "MIT",
+  "babel": {
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread",
+      "transform-es2015-arrow-functions",
+      [
+        "transform-runtime",
+        {
+          "polyfill": false,
+          "regenerator": true
+        }
+      ]
+    ],
+    "presets": [
+      "es2015",
+      "stage-2",
+      "react"
+    ]
+  },
   "dependencies": {
-    "mirrorx": "^0.2.5",
-    "jquery": "^3.2.1"
+    "animate.css": "^3.5.2",
+    "antd": "^2.13.1",
+    "antd-mobile": "^1.6.7",
+    "babel-runtime": "^6.26.0",
+    "history": "^4.7.2",
+    "jquery": "^3.2.1",
+    "jsing": "0.0.4",
+    "mirrorx": "^0.2.6",
+    "store": "^2.0.12",
+    "uniqid": "^4.1.1"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.3",
+    "babel-core": "^6.26.0",
+    "babel-plugin-import": "^1.4.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "image-webpack-loader": "^3.4.2",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "precss": "^2.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "react-hot-loader": "^1.3.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.8.1",
+    "webpack-merge": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mfma/ReactBoilerplate.git"
   }
 }
