@@ -1,0 +1,18 @@
+.ma-left-bar {
+    width:264px;
+}
+
+.ma-left-bar>.ant-layout-sider-children{
+    height:100%;
+}
+
+.ma-menus {
+    width: 64px;
+    height: 100%;
+}
+
+.ma-menu-layout {
+    width: 200px;
+    height: 100%;
+    background-color: blue;
+}
