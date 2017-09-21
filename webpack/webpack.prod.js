@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 let config = require('./webpack.config');
 
 config.output = merge(config.output, {
-	publicPath: "",
+	publicPath: "/test/",
 	filename: 'js/[name].[chunkhash].js',
 	chunkFilename: 'js/[name].[chunkhash].js'
 });
@@ -23,6 +23,7 @@ config.plugins.push(new CleanWebpackPlugin(['dist']));
 config.plugins.push(new HtmlWebpackPlugin({
 	filename: 'index.html',
 	template: path.resolve('index.html'),
+	inject: true,
 	chunks: ['app', 'lib'],
 	minify: {
 		collapseWhitespace: true,
@@ -46,6 +47,10 @@ config.plugins.push(new webpack.optimize.UglifyJsPlugin({
 		comments: false
 	}
 }));
-
+config.plugins.push(new webpack.DefinePlugin({
+	'process.env': {
+		'NODE_ENV': JSON.stringify('production')
+	}
+}));
 
 module.exports = config;

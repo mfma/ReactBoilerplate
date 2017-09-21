@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import mirror, {actions} from 'mirrorx'
+import {actions} from 'mirrorx'
 import localData from 'test/data.json';
 import './welcome.css';
 
@@ -10,11 +10,12 @@ class Welcome extends PureComponent {
 	 * 前往渲染界面
 	 */
 	goPage = () => {
-		actions.routing.push('/edit');
+		actions.routing.push('/test/edit');
 	};
 	
 	componentDidMount() {
 		actions.currentPage.saveProjectInfo(localData);
+		console.log("111");
 		this.goPage();
 	}
 	

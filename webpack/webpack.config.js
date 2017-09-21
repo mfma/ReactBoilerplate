@@ -4,7 +4,6 @@ const webpack = require('webpack');
 
 const SRC_PATH = path.resolve("src");
 const DIST_PATH = path.resolve("dist");
-const PUBLIC_PATH = path.resolve('public');
 const CONFIG_PATH = path.resolve('config');
 const TEST_PATH = path.resolve('test');
 const NODE_MODULES = path.resolve('node_modules');
@@ -88,20 +87,18 @@ let config = {
 			"app": path.resolve(SRC_PATH, 'app/'),
 			"config": CONFIG_PATH,
 			"utils": path.resolve(SRC_PATH, 'utils/'),
-			"test": TEST_PATH
+			"test": TEST_PATH,
+			"images":path.resolve(SRC_PATH,'img/')
 		},
 		modules: [
 			SRC_PATH,
 			NODE_MODULES
 		],
-		extensions: [' ', '.js', '.jsx', '.es6', 'css', 'png', 'svg', 'jpg', 'jpeg']
+		extensions: [' ', '.js', '.jsx', '.es6', '.css', '.png', '.svg', '.jpg', '.jpeg']
 	},
 	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
 			names: ['lib', 'manifest'],
-		}),
-		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
 		}),
 		function () {
 			this.plugin('compilation', function (compilation) {

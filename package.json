@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "start": "node webpack/webpack.dev.js --hot",
-    "build": "webpack --config webpack/webpack.prod.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js"
   },
   "license": "MIT",
   "babel": {
@@ -60,6 +60,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.7",
+    "cross-env": "^5.0.5",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",

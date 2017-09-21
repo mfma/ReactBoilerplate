@@ -15,7 +15,7 @@
     margin-left: calc(-95px / 2);
     width: 95px;
     height: 77px;
-    background: url('/public/images/logo.svg') no-repeat;
+    background: url('/src/img/logo.svg') no-repeat;
     background-size: cover;
 }
 

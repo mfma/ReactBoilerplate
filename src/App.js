@@ -4,7 +4,7 @@ import Index from 'app/Index';
 import Welcome from "app/welcome/Welcome";
 import EditContainer from "app/edit/EditContainer";
 import models from './model/models';
-
+import './css/base.css';
 mirror.defaults({
 	historyMode: 'browser'
 });
@@ -15,8 +15,8 @@ mirror.model(models);
 render(
 	<Router>
 		<Index>
-			<Route exact path="/" component={withRouter(Welcome)}/>
-			<Route exact path="/edit" component={withRouter(EditContainer)}/>
+			<Route exact path="/test" component={withRouter(Welcome)}/>
+			<Route exact path="/test/edit" component={withRouter(EditContainer)}/>
 		</Index>
 	</Router>
 	, document.getElementById('app'));

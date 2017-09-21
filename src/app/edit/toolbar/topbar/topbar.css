@@ -1,0 +1,14 @@
+.ma-topbar{
+    height:48px;
+    line-height: 48px;
+}
+
+.ma-topbar-logo{
+    vertical-align: middle;
+}
+
+.ma-topbar-menus{
+    display: inline-block;
+    float: right;
+    height:100%;
+}
